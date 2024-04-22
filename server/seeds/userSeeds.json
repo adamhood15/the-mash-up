@@ -1,0 +1,73 @@
+[
+  {
+    "firstName": "John",
+    "lastName": "Smith",
+    "username": "John-Smith121",
+    "email": "JSmith@mail.com",
+    "password": "password01"
+  },
+  {
+    "firstName": "Tori",
+    "lastName": "Amos",
+    "username": "toriamos25",
+    "email": "cute-dog@gmail.com",
+    "password": "password02"
+  },
+  {
+    "firstName": "Pete",
+    "lastName": "Gabrial",
+    "username": "peteGab77",
+    "email": "shock-monkey@yahoo.com",
+    "password": "password03"
+  },
+  {
+    "firstName": "Mike",
+    "lastName": "Myers",
+    "username": "Wayne-Garth",
+    "email": "saturdaynight@nbc.com",
+    "password": "password04"
+    
+  },
+  {
+    "firstName": "Peter",
+    "lastName": "Townsend",
+    "username": "kidsRallright",
+    "email": "pete@who.com",
+    "password": "password05"
+  },
+  {
+    "firstName": "Jimi",
+    "lastName": "Hendrix",
+    "username": "JimiH",
+    "email": "windcries@mary.com",
+    "password": "password06"
+  },
+  {
+    "firstName": "Carole",
+    "lastName": "King",
+    "username": "creolequeen",
+    "email": "choare@techfriends.dev",
+    "password": "password07"
+  },
+  {
+    "firstName": "David",
+    "lastName": "Thomas",
+    "username": "DavidThomas11",
+    "email": "dthomas@techfriends.dev",
+    "password": "password08"
+  },
+  {
+    "firstName": "Don",
+    "lastName": "Was",
+    "username": "WasNotWas",
+    "email": "donald@mail.com",
+    "password": "password09"
+  },
+  {
+    "firstName": "Les",
+    "lastName": "Paul",
+    "username": "lespaul66",
+    "email": "lespaul@shred.com",
+    "password": "password10"
+  }
+]
