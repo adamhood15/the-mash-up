@@ -17,6 +17,7 @@
     "concurrently": "^5.1.0"
   },
   "dependencies": {
+    "@apollo/client": "^3.9.11",
     "@cloudinary/react": "^1.11.2",
     "@cloudinary/url-gen": "^1.11.1",
     "cloudinary-react": "^1.8.1",

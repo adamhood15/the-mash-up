@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigation, Route } from 'react-router-dom';
+import { useNavigate, Route } from 'react-router-dom';
 import { Image } from 'cloudinary-react';
 // import "dotenv";
 

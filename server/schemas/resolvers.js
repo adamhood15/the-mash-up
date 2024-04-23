@@ -1,3 +1,4 @@
+const { ApolloError } = require('apollo-server-express');
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Product, Order } = require('../models');
 const { signToken } = require('../utils/auth');
@@ -48,9 +49,16 @@ const resolvers = {
 
   Mutation: {
     addUser: async (parent, args) => {
+      const { email } = args;
+      // Check if the email already exists
+      const existingUser = await User.findOne({ email });
+      if (existingUser) {
+        throw new ApolloError('Email already exists', 'EMAIL_ALREADY_EXISTS');
+      }
+      // Create a new user if the email doesn't exist
       const user = await User.create(args);
       const token = signToken(user);
-
+    
       return { token, user };
     },
     addOrder: async (parent, { products }, context) => {
