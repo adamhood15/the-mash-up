@@ -38,7 +38,6 @@ const productSchema = new Schema({
     type: String,
     lowercase: true,
   },
-    
   
   seller: {
     type: String,

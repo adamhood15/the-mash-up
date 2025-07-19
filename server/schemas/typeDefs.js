@@ -16,7 +16,12 @@ const typeDefs = gql`
     keyword: String
     
   }
-    
+
+  type Cart {
+    _id: ID
+    products: [Product]
+    user: User
+  }
 
   type Order {
     _id: ID
@@ -32,6 +37,7 @@ const typeDefs = gql`
     email: String
     wishlist: [String]
     products: [Product]
+    cart: Cart
     orders: [Order]
   }
 
@@ -40,14 +46,13 @@ const typeDefs = gql`
     user: User
   }
 
- 
-
   type Query {
     
     products: [Product]
     product(productId: ID!): Product
     user: User
     order(_id: ID!): Order
+    cart(userId: ID!): Cart
    
   }
 
@@ -80,6 +85,7 @@ const typeDefs = gql`
     ): User
     updateProduct(_id: ID!, quantity: Int!, seller: String): Product
     login(email: String!, password: String!): Auth
+    updateCart(userId: ID!, products: [ID]!): Cart
   }
 `;
 
