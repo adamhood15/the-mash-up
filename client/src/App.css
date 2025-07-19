@@ -2,12 +2,73 @@
   font-family: 'Rowdies';
 }
 
-#root {
-    background-color: #fc2403;
+:root {
+
+    --white: #ffffff;
+    --red: #fc2403;
+    --gray: #c2c2c2;
+    --ash-black: #282828;
+    --border-radius: .375em;
+    
 }
 
 body {
-    background-color: #fc2403;
+    background-color: var(--red);
+}
+
+.nav-menu {
+  background-color: #000000;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.nav-list {
+  display: flex;
+  gap: 5px;
+}
+
+.nav-menu-dropdown-parent {
+  display: flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+
+.nav-submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: black;
+  color: white;
+  padding: 0.5rem;
+  border-radius: var(--border-radius);
+  z-index: 100;
+}
+
+.nav-menu-dropdown-parent:hover .nav-submenu {
+  display: block;
+}
+
+.nav-menu-dropdown-parent:hover .dropdown-arrow {
+  rotate: 180deg;
+}
+
+.nav-menu-container {
+  color: var(--white);
+  padding: 3px;
+  border-radius: var(--border-radius);
+}
+
+.nav-red-arrow {
+  padding: 0 0 0 5px;
+}
+
+/* Hover Styles */
+.nav-menu-dropdown-parent:hover {
+  background-color: var(--ash-black);
+  color: var(--red);
 }
 
 #title {
@@ -35,7 +96,7 @@ body {
 
 /* Product List */
 .cart-btn {
-    background-color: #fc2403;
+    background-color: var(--red);
 }
 
     .sidebar li:hover a::before {
