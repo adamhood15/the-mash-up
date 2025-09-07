@@ -6,13 +6,15 @@ import Auth from '../../utils/auth';
 
 
 
-export default function LogInForm(props) {
+export default function LogInForm() {
   const navigate = useNavigate();
   const [formState, setFormState] = useState({ email: '', password: '' });
+  const [errorMessage, setErrorMessage] = useState('');
   const [login, { error }] = useMutation(LOGIN);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+
     try {
       const mutationResponse = await login({
         variables: { email: formState.email, password: formState.password },
@@ -21,7 +23,7 @@ export default function LogInForm(props) {
       Auth.login(token);
       navigate("/products")
     } catch (e) {
-      console.log(e);
+      setErrorMessage("Login failed. Please check your email and password.");
     }
   };
 
@@ -53,14 +55,18 @@ export default function LogInForm(props) {
           max-w-md
         "
         >
-          <div className="font-medium self-center text-xl sm:text-3xl text-gray-800">
+          <p className="font-medium self-center text-xl sm:text-3xl text-gray-800">
             Welcome Back
-          </div>
-          <div className="mt-4 self-center text-xl sm:text-sm text-gray-800">
+          </p>
+          <p className="mt-4 self-center text-xl sm:text-sm text-gray-800">
             Enter your credentials to access your account
-          </div>
-
-          <div className="mt-10">
+          </p>
+          {errorMessage && (
+          <p className="mt-4 text-red-600 text-sm font-medium text-center">
+            {errorMessage}
+          </p>
+        )}
+          <div className="mt-4">
             <form onSubmit={handleFormSubmit}>
               <div className="flex flex-col mb-5">
                 <label
@@ -203,7 +209,7 @@ export default function LogInForm(props) {
           "
           >
             <span className="ml-2 text-lg">
-              You don't have an account?
+              Don't have an account?<br></br>
               <Link to="/signup" className="text-lg ml-2 text-[#fc2403] font-semibold">
                 Register now
               </Link>
@@ -212,6 +218,8 @@ export default function LogInForm(props) {
         </div>
       
         </div>
+       
+        
 
     </>
   );

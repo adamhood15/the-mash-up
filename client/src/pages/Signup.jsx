@@ -4,15 +4,17 @@ import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
 
-const SignUp = () => {
+export default function SignUp () {
   const navigate = useNavigate("/products");
   const [userData, setUserData] = useState({});
+  const [errorMessage, setErrorMessage] = useState('');
 
   const [addUser] = useMutation(ADD_USER);
 
   const handleInputChange = (event) => {
     const { id, value } = event.target;
     setUserData({ ...userData, [id]: value });
+
   };
 
   const handleSubmit = async (event) => {
@@ -25,14 +27,9 @@ const SignUp = () => {
       });
   
       Auth.login(data.addUser.token);
+
     } catch (error) {
-      if (error.message.includes('duplicate key error')) {
-        // Handle duplicate email error (e.g., display error message to user)
-        console.error('User with this email already exists.', error);
-      } else {
-        // Handle other errors
-        console.error('Error registering user:', error);
-      }
+      setErrorMessage(error);
     }
   };
 
@@ -53,11 +50,16 @@ const SignUp = () => {
         "
         onSubmit={handleSubmit}
       >
-        <div className="font-medium self-center text-xl sm:text-3xl text-gray-800">
+        <p className="font-medium self-center text-xl sm:text-3xl text-gray-800">
           Sign up
-        </div>
+        </p>
+        {errorMessage && (
+          <p>
+            {errorMessage}
+          </p>
+        )}
         <div className="mt-10">
-          <div className="flex flex-col mb-5">
+
             <label
               className="mb-1 text-xs tracking-wide text-gray-600"
               htmlFor="firstName"
@@ -78,9 +80,8 @@ const SignUp = () => {
               id="firstName"
               onChange={handleInputChange}
             />
-          </div>
+        
 
-          <div className="flex flex-col mb-5">
             <label
               className="mb-1 text-xs tracking-wide text-gray-600"
               htmlFor="lastName"
@@ -101,9 +102,7 @@ const SignUp = () => {
               id="lastName"
               onChange={handleInputChange}
             />
-          </div>
 
-          <div className="flex flex-col mb-5">
             <label
               className="mb-1 text-xs tracking-wide text-gray-600"
               htmlFor="email"
@@ -124,9 +123,7 @@ const SignUp = () => {
               id="email"
               onChange={handleInputChange}
             />
-          </div>
 
-          <div className="flex flex-col mb-5">
             <label
               className="mb-1 text-xs tracking-wide text-gray-600"
               htmlFor="username"
@@ -147,9 +144,7 @@ const SignUp = () => {
               id="username"
               onChange={handleInputChange}
             />
-          </div>
 
-          <div className="flex flex-col mb-5">
             <label
               className="mb-1 text-xs tracking-wide text-gray-600"
               htmlFor="password"
@@ -170,7 +165,6 @@ const SignUp = () => {
               id="password"
               onChange={handleInputChange}
             />
-          </div>
 
           <button
             className="flex
@@ -198,4 +192,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+
