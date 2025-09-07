@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../utils/mutations";
+
 import { Button } from "../ui/Button.jsx";
-import { Label } from "./Label.jsx";
-import { InputField } from "./InputField.jsx";
+import { FormField } from "./formField.jsx";
 import Auth from "../utils/auth";
 
 export default function SignUpForm () {
@@ -20,41 +20,37 @@ export default function SignUpForm () {
       label: 'First Name',
       type: 'text',
       icon: '<i class="fas fa-address-card text-[#fc2403]" aria-hidden="true"></i>',
-      includeIn: ['signup']
+      form: ['signup']
     },
     {
       id: 'lastName',
       label: 'Last Name',
       type: 'text',
       icon: '<i class="fas fa-address-card text-[#fc2403]" aria-hidden="true"></i>',
-      includeIn: ['signup']
+      form: ['signup']
     },
     {
       id: 'email',
       label: 'E-Mail Address',
       type: 'email',
       icon: '<i class="fas fa-at text-[#fc2403]" aria-hidden="true"></i>',
-      includeIn: ['signup', 'login']
+      form: ['signup', 'login']
     },
     {
       id: 'userName',
       label: 'User Name',
       type: 'text',
       icon: '<i class="fas fa-user-o text-[#fc2403]" aria-hidden="true"></i>',
-      includeIn: ['signup', 'login']
+      form: ['signup', 'login']
     },
     {
       id: 'password',
       label: 'Password',
       type: 'password',
       icon: '<i class="fas fa-lock text-[#fc2403]" aria-hidden="true"></i>',
-      includeIn: ['signup', 'login']
+      form: ['signup', 'login']
     }
 ]
-
-function createFields(formFields) {
- 
-}
 
   const handleInputChange = (event) => {
     const { id, value } = event.target;
@@ -72,9 +68,21 @@ function createFields(formFields) {
       });
   
       Auth.login(data.addUser.token);
+      navigate;
 
     } catch (error) {
-      setErrorMessage(error);
+
+      if (error.graphQLErrors && error.graphQLErrors.length > 0) {
+        const gqlError = error.graphQLErrors[0];
+
+        if (gqlError.extensions.code === "Email_ALREADY_EXISTS") {
+          setErrorMessage("That email is already registered. Please log in.");
+        } else {
+          setErrorMessage(gqlError.message);
+        }
+      } else {
+        setErrorMessage("Something went wrong. Please try again.");
+      }
     }
   };
 
@@ -99,17 +107,21 @@ function createFields(formFields) {
         <p className="font-medium self-center text-xl sm:text-3xl text-gray-800">
           Sign up
         </p>
-        {errorMessage && (
-          <p>
-            {errorMessage}
-          </p>
-        )}
+          {errorMessage && (
+            <p className="text-red-600 text-sm mt-2">{errorMessage}</p>
+          )}
         <div className="mt-10">
 
-          <Label />
-          <InputField /> 
-
-         <Button type="submit"/>
+         <FormField 
+            formFields={formFields}
+            mode="signup"
+            onChange={handleInputChange}
+         />
+         <Button 
+          type="submit"
+          mode="signup"
+          onSubmit={handleSubmit}
+          />
         </div>
       </form>
     </div>
