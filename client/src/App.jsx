@@ -1,27 +1,23 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Header from "./components/ui/Header";
-import Home from "./pages/Home";
-import SignUp from "./pages/Signup";
-
-import Cart from "./components/ui/Cart";
-import Account from "./pages/Account";
-import PurchaseHistory from "./components/ui/PurchaseHistory";
-import SaleHistory from "./components/ui/ProductOrders";
-import Checkout from "./pages/Checkout";
-
-{
-  /*import Home from './pages/Home';*/
-}
-import ProductForm from "./pages/ProductForm";
 import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
   createHttpLink,
 } from "@apollo/client";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { setContext } from "@apollo/client/link/context";
 import "./App.css";
+
+import Header from "./components/ui/Header/Header";
+import Home from "./pages/Home";
+import SignUp from "./pages/Signup";
+import Cart from "./components/ui/Cart";
+import Account from "./pages/Account";
+import PurchaseHistory from "./components/ui/PurchaseHistory";
+import SaleHistory from "./components/ui/ProductOrders";
+import Checkout from "./pages/Checkout";
+import ProductForm from "./pages/ProductForm";
 import ProductList from "./components/ui/ProductList";
 import ProductSubmission from "./pages/ProductSubmission";
 import UserProducts from "./pages/UserProducts";

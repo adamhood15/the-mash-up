@@ -196,7 +196,6 @@ export default function LogInForm() {
               </div>
             </form>
           </div>
-        <div className="flex justify-center items-center mt-6">
           <p
             href="#"
             target="_blank"
@@ -208,14 +207,13 @@ export default function LogInForm() {
             text-xs text-center
           "
           >
-            <span className="ml-2 text-lg">
+            <span className=" text-lg">
               Don't have an account?<br></br>
               <Link to="/signup" className="text-lg ml-2 text-[#fc2403] font-semibold">
                 Register now
               </Link>
             </span>
           </p>
-        </div>
       
         </div>
        
