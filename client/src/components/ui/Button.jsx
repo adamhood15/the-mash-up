@@ -1,24 +1,17 @@
-export default function SubmitButton () {
-    return 
-        <button
-            className="flex
-                    mt-2
-                    items-center
-                    justify-center
-                    focus:outline-none
-                    text-white text-sm
-                    sm:text-base
-                    bg-[#fc2403]
-                    hover:bg-black
-                    
-                    py-2
-                    w-full
-                    transition
-                    duration-150
-                    ease-in"
-            type="submit"
+export default function Button({buttonType ="button", variant="primary", children, ...props}) {
+
+    const variants = {
+        primary: "bg-transparent hover:bg-red-500 text-red-700 font-semibold hover:text-black py-2 px-4 border border-red-500 hover:border-transparent rounded",
+        secondary: "bg-transparent hover:bg-black-500 text-black-700 font-semibold hover:text-white py-2 px-4 border border-black-500 hover:border-transparent rounded"
+    }
+
+    return  (
+        <button 
+            className={`${variants[variant]}`} 
+            type={`${buttonType}`}
+            {...props}
             >
-            SUBMIT
+                {children}
         </button>
-    
+    );
 }

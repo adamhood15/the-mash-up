@@ -1,27 +1,65 @@
-* {
-  font-family: 'Rowdies';
-}
+
 
 :root {
 
-    --white: #ffffff;
-    --red: #fc2403;
-    --gray: #c2c2c2;
-    --ash-black: #282828;
-    --border-radius: .375em;
+    --color-white: #ffffff;
+    --color-red: #fc2403;
+    --color-gray: #c2c2c2;
+    --color-ash-black: #282828;
+    --border-radius-standard: .375em;
+    --font-family-body: "Rowdies", "Baloo 2", "Fredoka", "Quicksand", "Arial Rounded MT Bold", "Arial", sans-serif;
+    --font-family-heading: "Monofett", "Oswald", "Raleway", "Montserrat", sans-serif;
     
 }
 
-body {
-    background-color: var(--red);
+* {
+  font-family: var(--font-family-body);
 }
 
-.logo {
-  align-self: flex-start;
+body {
+    background-color: var(--color-red);
+    margin: 0px;
 }
+
+/* Logo Styles */
+.logo {
+  font-family: var(--font-family-heading);
+  color: var(--color-white);
+  font-size: 1em;
+}
+
+.logo--header {
+  font-size: 3em;
+  margin: 0.2em 0;
+  text-align: center;
+}
+
+/* Header Styles */
+.header-container {
+  background-color: var(--color-ash-black);
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+}
+
+/* Button Styles */
+.button--search {
+  background-color: var(--color-red);
+  border-radius: 0 .375em .375em 0;
+}
+
+/* Input Styles */
+.input--search {
+
+}
+
+.nav--icon {
+  color: var(--color-white);
+}
+
 
 .nav-menu {
-  background-color: #000000;
+  background-color: var(--color-ash-black);
   display: grid;
   grid-template-columns: 25% auto 25%;
   padding: 0 10px;
@@ -49,8 +87,8 @@ body {
   position: absolute;
   top: 100%;
   left: 0;
-  background-color: black;
-  color: white;
+  background-color: var(--color-ash-black);
+  color: var(--color-white);
   padding: 0.5rem;
   border-radius: var(--border-radius);
   z-index: 100;
@@ -65,7 +103,7 @@ body {
 }
 
 .nav-menu-container {
-  color: var(--white);
+  color: var(--color-white);
   padding: 3px;
   border-radius: var(--border-radius);
 }
@@ -76,8 +114,8 @@ body {
 
 /* Hover Styles */
 .nav-menu-dropdown-parent:hover {
-  background-color: var(--ash-black);
-  color: var(--red);
+  background-color: var(--color-ash-black);
+  color: var(--color-red);
 }
 
 #title {
@@ -105,7 +143,7 @@ body {
 
 /* Product List */
 .cart-btn {
-    background-color: var(--red);
+    background-color: var(--color-red);
 }
 
     .sidebar li:hover a::before {
@@ -115,12 +153,12 @@ body {
       left: 0;
       height: 100%;
       width: 4px;
-      background: black;
+      background: var(--color-ash-black);
     }
 
     .sidebar li:hover a i,
     .sidebar li:hover a span {
-      color: white;
+      color: var(--color-white);
     }
     
 /* Comments Component */
@@ -149,14 +187,14 @@ body {
     inset: 0 !important;
     top: 50% !important;
     left: 80% !important;
-    background: white;
+    background: var(--color-white);
     border: 0px;
-    color: #27272a;
+    color: var(--color-ash-black);
   }
   
   .flickity-prev-next-button:hover {
-    background-color: #27272a;
-    color: white;
+    background-color: var(--color-ash-black);
+    color: var(--color-white);
   }
   
   .flickity-prev-next-button.previous {

@@ -7,9 +7,10 @@ import {
 } from "@apollo/client";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { setContext } from "@apollo/client/link/context";
-import "./App.css";
+import "./global.css";
+import "./app.css";
 
-import Header from "./components/ui/Header/Header";
+
 import Home from "./pages/Home";
 import SignUp from "./pages/Signup";
 import Cart from "./components/ui/Cart";
@@ -23,6 +24,7 @@ import ProductSubmission from "./pages/ProductSubmission";
 import UserProducts from "./pages/UserProducts";
 import SingleProduct from "./pages/SingleProduct";
 import ProductSearch from "./pages/ProductSearch";
+import Header from "./components/ui/new_header/Header";
 
 
 const httpLink = createHttpLink({

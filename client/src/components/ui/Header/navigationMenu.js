@@ -48,34 +48,21 @@ const navMenu = [
         dropdownList: ["T-Shirts", "Hoodies", "Caps", "Bags", "Accessories"],
     },
     {
-        id: 6,
+        id: 7,
         title: "My Account",
         needLogIn: true,
-        dropdownList: ["My Profile", "My Orders", "Sell", "My Collection"]
+        dropdownList: ["Profile", "Orders", "Sell", "Collection"]
     },
-    {
-        id: 6,
-        title: "Sell",
-        needLogIn: true,
-        align: 'center'
-
-    },
+   
         {
-        id: 7,
-        title: "Account",
-        needLogIn: true,
-        align: 'center'
-
-    },
-        {
-        id: 8,
+        id: 10,
         title: "Log Out",
         needLogIn: true,
         align: 'center'
 
     },
     {
-        id: 10,
+        id: 11,
         title: "Cart",
         needLogIn: true,
         align: 'center'
