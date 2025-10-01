@@ -7,7 +7,6 @@ import {
 } from "@apollo/client";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { setContext } from "@apollo/client/link/context";
-import "./global.css";
 import "./app.css";
 
 
