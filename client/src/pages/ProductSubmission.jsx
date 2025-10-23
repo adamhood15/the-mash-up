@@ -56,10 +56,10 @@ const ProductSubmission = () => {
   };
 
   return (
-    <div className="sm:px-8 md:px-16 sm:py-8">
-      <div className="">
+    <div className="responsive-padding">
+      <div>
         <header className="border-dashed border-2 border-gray-400 py-12 flex flex-col justify-center items-center">
-          <p className="mb-3 font-semibold text-gray-900 flex flex-wrap justify-center">
+          <p className="mb-3 font-semibold text-gray-900 flex justify-center">
             <span>Click on Upload a File</span>&nbsp;
           </p>
           <input
@@ -70,7 +70,7 @@ const ProductSubmission = () => {
             accept="image/*"
           />
           <label htmlFor="hidden-input" className="cursor-pointer">
-            <div className="mt-2 rounded-sm px-3 py-1 bg-gray-200 hover:bg-gray-300 focus:shadow-outline focus:outline-none">
+            <div className="mt-2 rounded-sm px-3 py-1 bg-gray-200 hover-bg-gray-300 focus-shadow-outline focus-outline-none">
               Upload a file
             </div>
           </label>
@@ -82,14 +82,14 @@ const ProductSubmission = () => {
         <div className="flex justify-end pb-8 pt-6 gap-4">
           <button
             onClick={uploadImage}
-            className="rounded-sm px-3 py-1 bg-blue-700 hover:bg-blue-500 text-white focus:shadow-outline focus:outline-none disabled:cursor-not-allowed"
+            className="rounded-sm px-3 py-1 bg-blue-700 hover-bg-blue-500 text-white focus-shadow-outline focus-outline-none disabled-cursor-not-allowed"
             disabled={!image}
           >
             Upload now
           </button>
           <button
             onClick={handleResetClick}
-            className="rounded-sm px-3 py-1 bg-red-700 hover:bg-red-500 text-white focus:shadow-outline focus:outline-none"
+            className="rounded-sm px-3 py-1 bg-red-700 hover-bg-red-500 text-white focus-shadow-outline focus-outline-none"
           >
             Reset
           </button>

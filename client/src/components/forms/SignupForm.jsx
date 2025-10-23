@@ -87,28 +87,21 @@ export default function SignUpForm () {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-[#fc2403] p-10">
+    <div className="min-h-screen flex flex-col items-center justify-center" style={{backgroundColor: 'var(--color-red)'}}>
       <form
-        className="
-          flex flex-col
-          bg-gray-100
-          shadow-md
-          px-4
-          sm:px-6
-          md:px-8
-          lg:px-10
-          py-8
-          w-75
-          max-w-md
-        "
+        className="flex flex-col bg-gray-100 shadow-md px-4 py-8 max-w-md"
+        style={{
+          padding: '2rem',
+          width: '75%'
+        }}
         action={submit}
         onSubmit={handleSubmit}
       >
-        <p className="font-medium self-center text-xl sm:text-3xl text-gray-800">
+        <p className="font-medium text-xl text-gray-900" style={{alignSelf: 'center'}}>
           Sign up
         </p>
           {errorMessage && (
-            <p className="text-red-600 text-sm mt-2">{errorMessage}</p>
+            <p className="text-sm mt-2" style={{color: 'var(--color-red)'}}>{errorMessage}</p>
           )}
         <div className="mt-10">
 
