@@ -4,7 +4,7 @@ import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../utils/mutations";
 
 import { Button } from "../ui/Button.jsx";
-import { FormField } from "./formField.jsx";
+import { FormField } from "./FormField.jsx";
 import Auth from "../utils/auth";
 
 export default function SignUpForm () {
