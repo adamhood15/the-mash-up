@@ -9,6 +9,7 @@ import {
 import { setContext } from "@apollo/client/link/context";
 
 import Header from "./components/ui/new_header/Header";
+import Footer from "./components/ui/footer/Footer";
 import Cart from "./components/ui/Cart";
 import PurchaseHistory from "./components/ui/PurchaseHistory";
 import SaleHistory from "./components/ui/ProductOrders";
@@ -51,9 +52,11 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <>
+      
+        <div className="flex flex-col min-h-screen">
           <Header />
-          <Routes>
+          <main className="flex-1 min-h-0">
+          <Routes >
             <Route 
               exact path="/" 
               element={<Home />} 
@@ -107,7 +110,10 @@ function App() {
               element={<ProductSearch />} 
             />
           </Routes>
-        </>
+          </main>
+          <Footer />
+          </div>
+   
       </Router>
     </ApolloProvider>
   );

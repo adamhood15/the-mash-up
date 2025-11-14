@@ -18,9 +18,7 @@ body {
     background-color: var(--red);
 }
 
-.logo {
-  align-self: flex-start;
-}
+
 
 .nav-menu {
   background-color: #000000;

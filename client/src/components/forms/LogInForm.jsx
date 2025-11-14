@@ -39,10 +39,10 @@ export default function LogInForm() {
     <>
         <div
           className="
-          border-8
+          border-4
           rounded-md
           border-black
-          bg-gray-400
+          bg-gray-300
           flex flex-col
           bg-gray-100
           shadow-md
@@ -51,8 +51,10 @@ export default function LogInForm() {
           md:px-8
           lg:px-10
           py-8
-          w-50
-          max-w-md
+          w-auto
+          h-auto
+          max-h-fit
+        
         "
         >
           <p className="font-medium self-center text-xl sm:text-3xl text-gray-800">

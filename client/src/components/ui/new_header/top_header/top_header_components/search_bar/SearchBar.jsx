@@ -9,6 +9,7 @@ export default function SearchBar() {
     return (
         <>
          <form className="form--search">
+            
            <SearchInput />
             <Button
                 className="button--search"

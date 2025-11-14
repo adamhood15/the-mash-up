@@ -3,16 +3,14 @@ import LogInForm from '../components/forms/LogInForm';
 
 export default function Home() {
     return (
-        <div className="flex h-screen w-screen ">
-           
-            <div className="w-1/2 h-full">
-            <img src={headphones} alt="headphones" className="object-cover h-full"/>
-
-            </div>
-            <div className="w-1/2 h-screen flex items-center justify-center">
+        <section 
+            className="w-full bg-cover bg-center flex justify-center items-center"
+            style={{ 
+                backgroundImage: `url(${headphones})`, 
+                height: "calc(100vh - 160px)" 
+            }}
+        >
             <LogInForm />
-
-                </div>
-        </div>
+        </section>
     )
 }
