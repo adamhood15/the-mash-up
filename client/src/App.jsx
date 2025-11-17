@@ -33,15 +33,22 @@ const httpLink = createHttpLink({
   uri: "/graphql",
 });
 
-const authLink = setContext((_, { headers }) => {
-  const token = localStorage.getItem("id_token");
+const authLink = setContext((operation, { headers }) => {
+  const token = localStorage.getItem('id_token');
+
+  // Skip sending Authorization header for signup or login
+  const isPublic =
+    operation.operationName === 'addUser' ||
+    operation.operationName === 'login';
+
   return {
     headers: {
       ...headers,
-      authorization: token ? `Bearer ${token}` : "",
+      authorization: !isPublic && token ? `Bearer ${token}` : '',
     },
   };
 });
+
 
 const client = new ApolloClient({
   link: authLink.concat(httpLink),

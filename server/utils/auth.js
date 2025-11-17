@@ -25,7 +25,7 @@ module.exports = {
       
     } catch (err) {
       console.error(err);
-      console.log('Invalid token');
+      req.user = null;
     }
 
     return req;
