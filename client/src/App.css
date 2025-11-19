@@ -80,9 +80,10 @@ body {
   color: var(--red);
 }
 
-#title {
+.logo {
   font-family: 'Monofett';
   font-size: 50px;
+  color: #ffffff;
 }
 
 .welcome-page {

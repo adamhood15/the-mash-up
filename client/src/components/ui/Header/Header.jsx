@@ -1,26 +1,12 @@
-import React from "react";
-import SearchBar from "../SearchBar";
-import Cart from "../Cart";
-import navMenu from "./navigationMenu.js";
-import Logo from "./Shared/Logo.jsx";
-import NavItems from "./NavItems.jsx";
-import { useMediaQuery } from 'react-responsive';
-
-
+import Heading from "../../shared/Heading";
+import SearchBar from "./search_bar/SearchBar";
 
 export default function Header() {
-  const [isOpen, setIsOpen] = React.useState("");
-  const isMobile = useMediaQuery({ maxWidth: 768 });
-
-  return (
-    <>
-      <nav className="nav-menu">
-        <Logo />
-        <NavItems navMenu={navMenu} />
-        <SearchBar />
-      </nav>
-
-      {isOpen === "cart" && <Cart />}
-    </>
-  );
+    return (
+        <header 
+            className="sticky top-0 w-full flex flex-col content-center gap-2 items-center p-3 bg-black mx-auto">
+            <Heading as="h1" variant="display" className="logo">The Mash Up</Heading>
+            <SearchBar />
+       </header>
+    );
 }

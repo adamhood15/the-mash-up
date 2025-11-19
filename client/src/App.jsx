@@ -8,7 +8,7 @@ import {
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 
-import Header from "./components/ui/new_header/Header";
+import Header from "./components/ui/header/Header";
 import Footer from "./components/ui/footer/Footer";
 import Cart from "./components/ui/Cart";
 import PurchaseHistory from "./components/ui/PurchaseHistory";

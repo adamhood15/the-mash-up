@@ -1,4 +1,4 @@
-import Icon from '../Icons/Icon'
+import Icon from '../../shared/Icon'
 
 export default function Footer () {
   return (
