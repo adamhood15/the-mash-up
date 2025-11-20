@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useMutation } from '@apollo/client'
 import { ADD_USER } from '../utils/mutations'
@@ -11,8 +11,8 @@ export default function SignUp () {
 
   const [addUser] = useMutation(ADD_USER)
 
-  const handleInputChange = event => {
-    const { id, value } = event.target
+  const handleInputChange = e => {
+    const { id, value } = e.target
     setUserData({ ...userData, [id]: value })
   }
 
@@ -32,7 +32,7 @@ export default function SignUp () {
   }
 
   return (
-    <div className='min-h-screen flex flex-col items-center justify-center bg-[#fc2403] p-10'>
+    <>
       <form
         className='
           flex flex-col
@@ -180,6 +180,6 @@ export default function SignUp () {
           </button>
         </div>
       </form>
-    </div>
+    </>
   )
 }

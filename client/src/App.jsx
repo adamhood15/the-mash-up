@@ -1,129 +1,25 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  createHttpLink,
-} from "@apollo/client";
-import { setContext } from "@apollo/client/link/context";
+import { BrowserRouter as Router } from 'react-router-dom'
+import { ApolloProvider } from '@apollo/client'
+import { client } from './apollo/apolloClient'
 
-import Header from "./components/ui/header/Header";
-import Footer from "./components/ui/footer/Footer";
-import Cart from "./components/ui/Cart";
-import PurchaseHistory from "./components/ui/PurchaseHistory";
-import SaleHistory from "./components/ui/ProductOrders";
-import ProductList from "./components/ui/ProductList";
+import Header from './components/ui/Header/Header'
+import Footer from './components/ui/footer/Footer'
+import AppRoutes from './routes/AppRoutes'
 
-import Home from "./pages/Home";
-import SignUp from "./pages/Signup";
-import Account from "./pages/Account";
-import Checkout from "./pages/Checkout";
-import ProductForm from "./pages/ProductForm";
-import ProductSubmission from "./pages/ProductSubmission";
-import UserProducts from "./pages/UserProducts";
-import SingleProduct from "./pages/SingleProduct";
-import ProductSearch from "./pages/ProductSearch";
+import './App.css'
 
-import "./App.css";
-
-
-
-const httpLink = createHttpLink({
-  uri: "/graphql",
-});
-
-const authLink = setContext((operation, { headers }) => {
-  const token = localStorage.getItem('id_token');
-
-  // Skip sending Authorization header for signup or login
-  const isPublic =
-    operation.operationName === 'addUser' ||
-    operation.operationName === 'login';
-
-  return {
-    headers: {
-      ...headers,
-      authorization: !isPublic && token ? `Bearer ${token}` : '',
-    },
-  };
-});
-
-
-const client = new ApolloClient({
-  link: authLink.concat(httpLink),
-  cache: new InMemoryCache(),
-});
-
-function App() {
+export default function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-      
-        <div className="flex flex-col min-h-screen">
+        <div className='flex flex-col min-h-screen'>
           <Header />
-          <main className="flex-1 min-h-0">
-          <Routes >
-            <Route 
-              exact path="/" 
-              element={<Home />} 
-            />
-            <Route 
-              exact path="/signup" 
-              element={<SignUp />} 
-            />
-            <Route 
-              path="/products" 
-              element={<ProductList />} 
-            />
-            <Route 
-              path="/productsubmission" 
-              element={<ProductSubmission />} 
-            />
-            <Route 
-              path="/addProduct" 
-              element={<ProductForm />} 
-            />
-            <Route 
-              path="/products/cart" 
-              element={<Cart />} 
-            />
-            <Route 
-              path="/checkout" 
-              element={<Checkout />} 
-            />
-            <Route 
-              path="/account" 
-              element={<Account />} 
-            />
-            <Route 
-              path="/account/purchase-history" 
-              element={<PurchaseHistory />} 
-            />
-            <Route 
-              path="/account/sale-history" 
-              element={<SaleHistory />} 
-            />
-            <Route 
-              path="/user" 
-              element={<UserProducts />} 
-            />
-            <Route 
-              path="/product/:productId" 
-              element={<SingleProduct />} 
-            />
-            <Route 
-              path="/productsearch/:searchKeyword" 
-              element={<ProductSearch />} 
-            />
-          </Routes>
+          <main className='flex-1 min-h-0'>
+            <AppRoutes />
           </main>
           <Footer />
-          </div>
-   
+        </div>
       </Router>
     </ApolloProvider>
-  );
+  )
 }
-
-export default App;

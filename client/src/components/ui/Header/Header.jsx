@@ -1,5 +1,5 @@
 import Heading from "../../shared/Heading";
-import SearchBar from "./search_bar/SearchBar";
+import SearchBar from './search_bar/SearchBar'
 
 export default function Header() {
     return (
