@@ -14,7 +14,7 @@ export default function App() {
       <Router>
         <div className='flex flex-col min-h-screen'>
           <Header />
-          <main className='flex-1 min-h-0'>
+          <main className='flex-1 overflow-auto min-h-0'>
             <AppRoutes />
           </main>
           <Footer />

@@ -1,185 +1,81 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { useMutation } from '@apollo/client'
-import { ADD_USER } from '../utils/mutations'
-import Auth from '../utils/auth'
+import React, { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import { useMutation } from "@apollo/client";
+import Form from "../components/forms/Form";
+import { ADD_USER } from "../utils/mutations";
+import Auth from "../utils/auth";
+import headphones from "../assets/images/headphones.png";
 
-export default function SignUp () {
-  const navigate = useNavigate('/products')
-  const [userData, setUserData] = useState({})
-  const [errorMessage, setErrorMessage] = useState('')
+export default function SignUp() {
+  const navigate = useNavigate();
+  const [errorMessage, setErrorMessage] = useState("");
+  const [addUser, { loading }] = useMutation(ADD_USER);
 
-  const [addUser] = useMutation(ADD_USER)
+  // Signup fields
+  const signupFields = [
+    { name: "firstName", label: "First Name", type: "text", placeholder: "First Name" },
+    { name: "lastName", label: "Last Name", type: "text", placeholder: "Last Name" },
+    { name: "email", label: "E-Mail Address", type: "email", placeholder: "Email" },
+    { name: "username", label: "User Name", type: "text", placeholder: "Username" },
+    { name: "password", label: "Password", type: "password", placeholder: "Password" },
+  ];
 
-  const handleInputChange = e => {
-    const { id, value } = e.target
-    setUserData({ ...userData, [id]: value })
-  }
-
-  const handleSubmit = async event => {
-    event.preventDefault()
-
+  const handleSignup = async (values) => {
     try {
-      // Query database
-      const { data } = await addUser({
-        variables: { ...userData }
-      })
-
-      Auth.login(data.addUser.token)
+      const { data } = await addUser({ variables: { ...values } });
+      Auth.login(data.addUser.token);
+      navigate("/products");
     } catch (error) {
-      setErrorMessage(error)
+      if (error.graphQLErrors && error.graphQLErrors.length > 0) {
+        const gqlError = error.graphQLErrors[0];
+        if (gqlError.extensions.code === "Email_ALREADY_EXISTS") {
+          setErrorMessage("That email is already registered. Please log in.");
+        } else {
+          setErrorMessage(gqlError.message);
+        }
+      } else {
+        setErrorMessage("Something went wrong. Please try again.");
+      }
     }
-  }
+  };
 
   return (
-    <>
-      <form
-        className='
-          flex flex-col
-          bg-gray-100
-          shadow-md
-          px-4
-          sm:px-6
-          md:px-8
-          lg:px-10
-          py-8
-          w-75
-          max-w-md
-        '
-        onSubmit={handleSubmit}
-      >
-        <p className='font-medium self-center text-xl sm:text-3xl text-gray-800'>
-          Sign up
-        </p>
-        {errorMessage && <p>{errorMessage}</p>}
-        <div className='mt-10'>
-          <label
-            className='mb-1 text-xs tracking-wide text-gray-600'
-            htmlFor='firstName'
-          >
-            First Name:
-          </label>
-          <input
-            className='text-sm
-                    placeholder-gray-500
-                    pl-10
-                    pr-4
-                    border border-gray-400
-                    w-full
-                    py-2
-                    focus:outline-none focus:border-red-400'
-            placeholder='First Name'
-            type='text'
-            id='firstName'
-            onChange={handleInputChange}
-          />
+    <section
+      className="w-full bg-cover bg-center flex justify-center items-center"
+      style={{ backgroundImage: `url(${headphones})`, height: "100%" }}
+    >
+      <div className="border-4 rounded-md border-black bg-gray-100 shadow-md px-4 sm:px-6 md:px-8 lg:px-10 py-8 w-auto max-w-md">
+        <Form
+          headerProps={{
+            title: "Create Your Account",
+            subtitle: "Fill in your details to sign up",
+            align: "center",
+          }}
+          bodyProps={{
+            fields: signupFields,
+          }}
+          footerProps={{
+            buttonText: "Sign Up",
+            buttonVariant: "default",
+            isLoading: loading,
+            secondaryContent: (
+              <p className="text-gray-800 text-sm text-center mt-4">
+                Already have an account?{" "}
+                <Link to="/login" className="text-[#fc2403] font-semibold ml-1">
+                  Log in
+                </Link>
+              </p>
+            ),
+          }}
+          onSubmit={handleSignup}
+        />
 
-          <label
-            className='mb-1 text-xs tracking-wide text-gray-600'
-            htmlFor='lastName'
-          >
-            Last Name:
-          </label>
-          <input
-            className='text-sm
-                  placeholder-gray-500
-                  pl-10
-                  pr-4
-                  border border-gray-400
-                  w-full
-                  py-2
-                  focus:outline-none focus:border-red-400'
-            placeholder='Last Name'
-            type='text'
-            id='lastName'
-            onChange={handleInputChange}
-          />
-
-          <label
-            className='mb-1 text-xs tracking-wide text-gray-600'
-            htmlFor='email'
-          >
-            Email:
-          </label>
-          <input
-            className='text-sm
-                    placeholder-gray-500
-                    pl-10
-                    pr-4
-                    border border-gray-400
-                    w-full
-                    py-2
-                    focus:outline-none focus:border-red-400'
-            placeholder='Email'
-            type='email'
-            id='email'
-            onChange={handleInputChange}
-          />
-
-          <label
-            className='mb-1 text-xs tracking-wide text-gray-600'
-            htmlFor='username'
-          >
-            Username:
-          </label>
-          <input
-            className='text-sm
-                    placeholder-gray-500
-                    pl-10
-                    pr-4
-                    border border-gray-400
-                    w-full
-                    py-2
-                    focus:outline-none focus:border-red-400'
-            placeholder='Username'
-            type='text'
-            id='username'
-            onChange={handleInputChange}
-          />
-
-          <label
-            className='mb-1 text-xs tracking-wide text-gray-600'
-            htmlFor='password'
-          >
-            Password:
-          </label>
-          <input
-            className='text-sm
-                    placeholder-gray-500
-                    pl-10
-                    pr-4
-                    border border-gray-400
-                    w-full
-                    py-2
-                    focus:outline-none focus:border-red-400'
-            placeholder='Password'
-            type='password'
-            id='password'
-            onChange={handleInputChange}
-          />
-
-          <button
-            className='flex
-                  mt-2
-                  items-center
-                  justify-center
-                  focus:outline-none
-                  text-white text-sm
-                  sm:text-base
-                  bg-[#fc2403]
-                  hover:bg-black
-                  
-                  py-2
-                  w-full
-                  transition
-                  duration-150
-                  ease-in'
-            type='submit'
-          >
-            SUBMIT
-          </button>
-        </div>
-      </form>
-    </>
-  )
+        {errorMessage && (
+          <p className="mt-4 text-red-600 text-sm font-medium text-center">
+            {errorMessage}
+          </p>
+        )}
+      </div>
+    </section>
+  );
 }
