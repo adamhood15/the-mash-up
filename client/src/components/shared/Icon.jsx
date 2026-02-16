@@ -1,5 +1,5 @@
-export default function Icon({ className, variant="user" }) {
+export default function Icon({ className, variant="user", onClick, ...props }) {
     return (
-    <i className={`${className}`}></i>
+    <i className={`${className}`} onClick={onClick} {...props}></i>
     );
 }
