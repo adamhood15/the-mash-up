@@ -4,6 +4,7 @@ import { useParams, Link } from "react-router-dom";
 
 import { QUERY_ALL_PRODUCTS } from '../utils/queries';
 
+
 const ProductSearch = () => {
   const { searchKeyword } = useParams();
   const { loading, data } = useQuery(QUERY_ALL_PRODUCTS);

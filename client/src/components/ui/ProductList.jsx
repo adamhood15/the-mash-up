@@ -3,6 +3,8 @@ import { useQuery } from "@apollo/client";
 import { Link } from "react-router-dom";
 import { QUERY_ALL_PRODUCTS } from "../../utils/queries";
 
+import ProductCard from "../ui/product-card/ProductCard";
+
 const ProductList = () => {
   const { loading, data } = useQuery(QUERY_ALL_PRODUCTS);
   const products = data?.products || [];
@@ -13,7 +15,8 @@ const ProductList = () => {
 
   return (
     <>
-      <h2 className="text-[50px] font-bold text-center p-10">
+    <ProductCard />
+      {/* <h2 className="text-[50px] font-bold text-center p-10">
         Welcome to the Store
       </h2>
       <div className="w-full flex flex-wrap justify-center">
@@ -115,7 +118,7 @@ const ProductList = () => {
               </div>
             </div>
           ))}
-      </div>
+      </div> */}
     </>
   );
 };
