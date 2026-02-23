@@ -69,5 +69,12 @@
     "username": "lespaul66",
     "email": "lespaul@shred.com",
     "password": "password10"
+  },
+  {
+    "firstName": "Adam",
+    "lastName": "Hood",
+    "username": "adamhood",
+    "email": "adamhood@gmail.com",
+    "password": "adamhood"
   }
 ]

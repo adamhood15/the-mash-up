@@ -5,7 +5,7 @@
     "image": "https://upload.wikimedia.org/wikipedia/en/4/4c/Never_Mind_the_Bollocks%2C_Here%27s_the_Sex_Pistols.png",
     "price": "10.00",
     "quantity": "1",
-    "condition": "good",
+    "condition": "excellent",
     "category": "Music",
     "keyword": "Rock",
     "seller": "John-Smith121"
@@ -27,7 +27,7 @@
     "image": "https://m.media-amazon.com/images/I/A13usaonutL._CLa%7C2140%2C2000%7CA1D-DywahdL.png%7C0%2C0%2C2140%2C2000%2B0.0%2C0.0%2C2140.0%2C2000.0_AC_UX679_.png",
     "price": "30.00",
     "quantity": "1",
-    "condition": "good",
+    "condition": "great",
     "category": "Merch",
     "keyword": "T-Shirts",
     "seller": "peteGab77"
@@ -38,7 +38,7 @@
     "image": "https://d13o3tuo14g2wf.cloudfront.net/thumbnails%2Flarge%2F_default_upload_bucket%2FSTR-DH190_0000_5caee107faa0a97db9eb94ee5b49487d_1_1.png.png?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9kMTNvM3R1bzE0ZzJ3Zi5jbG91ZGZyb250Lm5ldC90aHVtYm5haWxzJTJGbGFyZ2UlMkZfZGVmYXVsdF91cGxvYWRfYnVja2V0JTJGU1RSLURIMTkwXzAwMDBfNWNhZWUxMDdmYWEwYTk3ZGI5ZWI5NGVlNWI0OTQ4N2RfMV8xLnBuZy5wbmciLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjIxNDU3NjIwMDB9fX1dfQ__&Signature=KMTKD~KMu6D9M8sjy8mOF~5BwcTZCfG04slbWjFF3szv3sZZd1oRWlmguuXKmS9PIZKEO1L04XviZMXxxUmYtn9ltaAFdnDnXw8uiz3LlJQpWYrgi5j3-Q-b-YIvG5ZpzW5ViRWbUFXV05GLSDaNtkPnPPyGHA33WBWXYgyVoJRP27oT8oFAhvZgGjhAwrxlXTaqC0dYoOj3F8CyYXm8NeoDzij2NH-FCuF9lUryNEHTgo54zbweRiwOu950qz2CwS9HTc7NzXPHjnSwQEXS2ha99px3gXke8~abmkXTnyC5T~UJjngnQgt9IiRhwPMO1lp7W~cMj8Pd0euVPYgbUg__&Key-Pair-Id=K37BLT9C6HMMJ0",
     "price": "150.00",
     "quantity": "1",
-    "condition": "mint",
+    "condition": "fair",
     "category": "Equipment",
     "keyword": "DJ Equipment",
     "seller": "toriamos25"
@@ -49,7 +49,7 @@
     "image": "https://m.media-amazon.com/images/I/A13usaonutL._CLa%7C2140%2C2000%7CA1D-DywahdL.png%7C0%2C0%2C2140%2C2000%2B0.0%2C0.0%2C2140.0%2C2000.0_AC_UX679_.png",
     "price": "30.00",
     "quantity": "1",
-    "condition": "good",
+    "condition": "poor",
     "category": "Merch",
     "keyword": "T-Shirts",
     "seller": "peteGab77"
@@ -82,7 +82,7 @@
     "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzogq7nd9ZdbGse8yYAw247KQEvUyUMZ8naQ&usqp=CAU",
     "price": "20.00",
     "quantity": "1",
-    "condition": "good",
+    "condition": "poor",
     "category": "Merch",
     "keyword": "T-Shirts",
     "seller": "peteGab77"

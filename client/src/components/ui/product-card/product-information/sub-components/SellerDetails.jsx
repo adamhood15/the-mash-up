@@ -1,10 +1,12 @@
 import Text from "../../../../shared/Text";
 import Icon from "../../../../shared/Icon";
 
-export default function SellerInformation() {
+export default function SellerInformation({product}) {
+    const { seller } = product
+
     return (
             <div className="flex gap-2">
-                <div className="seller-rating flex gap-1">
+                {/* <div className="seller-rating flex gap-1">
                     <i className="fa-solid fa-star text-red-500" />
                     <Text 
                         variant="small"
@@ -14,13 +16,13 @@ export default function SellerInformation() {
                         4.60
                     </Text>
                     
-                </div>
+                </div> */}
                  <Text 
                         variant="small"
                         as="p"
                         className="product-card-seller-name text-white"
                     >
-                        tosimau
+                        {seller}
                     </Text>
             </div>
     )

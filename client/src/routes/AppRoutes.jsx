@@ -13,14 +13,14 @@ import ProductSearch from '../pages/ProductSearch'
 import Cart from '../components/ui/Cart'
 import PurchaseHistory from '../components/ui/PurchaseHistory'
 import SaleHistory from '../components/ui/ProductOrders'
-import ProductList from '../components/ui/ProductList'
+import MarketPlace from '../pages/MarketPlace'
 
 export default function AppRoutes() {
   return (
     <Routes>
       <Route path='/' element={<Home />} />
       <Route path='/signup' element={<SignUp />} />
-      <Route path='/products' element={<ProductList />} />
+      <Route path='/products' element={<MarketPlace />} />
       <Route path='/productsubmission' element={<ProductSubmission />} />
       <Route path='/addProduct' element={<ProductForm />} />
       <Route path='/products/cart' element={<Cart />} />
