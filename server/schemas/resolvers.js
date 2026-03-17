@@ -2,16 +2,27 @@ const { ApolloError } = require('apollo-server-express')
 const { AuthenticationError } = require('apollo-server-express')
 const { User, Product, Order } = require('../models')
 const { signToken } = require('../utils/auth')
-const { findOneAndUpdate } = require('../models/Order')
 
 const resolvers = {
   Query: {
-    products: async (parent, args) => {
-      return Product.find(args)
+    products: async (_, { keyword, category }) => {
+      const query = {}
+
+      if (keyword) {
+        query.$text = { $search: keyword }
+      }
+
+      if (category) {
+        query.category = category
+      }
+
+      return Product.find(query)
     },
     product: async (parent, { productId }) => {
       return Product.findOne({ _id: productId })
     },
+
+
     user: async (parent, args, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id).populate({
@@ -24,9 +35,11 @@ const resolvers = {
 
       throw new AuthenticationError('Not logged in')
     },
+
+    
     order: async (parent, { id }, context) => {
       if (context.user) {
-        const user = await User.findById(context.user.id).populate({
+        const user = await User.findById(context.user._id).populate({
           path: 'orders.products'
         })
 
@@ -54,9 +67,9 @@ const resolvers = {
     addOrder: async (parent, { products }, context) => {
       console.log(context)
       if (context.user) {
-        const order = new Order({ products })
+        const order = await Order.create({ products })
 
-        await User.findByIdAndUpdate(context.user.id, {
+        await User.findByIdAndUpdate(context.user._id, {
           $push: { orders: order }
         })
 
@@ -67,7 +80,7 @@ const resolvers = {
     },
     updateUser: async (parent, args, context) => {
       if (context.user) {
-        return User.findByIdAndUpdate(context.user.id, args, {
+        return User.findByIdAndUpdate(context.user._id, args, {
           new: true
         })
       }

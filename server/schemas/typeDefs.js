@@ -4,17 +4,16 @@ const typeDefs = gql`
  
 
   type Product {
-    _id: ID
-    name: String
+    _id: ID!
+    name: String!
     description: String
-    price: Float
+    price: Float!
     quantity: Int
     image: String
     condition: String
     seller: String
     category: String
     keyword: String
-    
   }
 
   type Cart {
@@ -47,13 +46,14 @@ const typeDefs = gql`
   }
 
   type Query {
-    
-    products: [Product]
+    products(
+      keyword: String,
+      category: String
+      ): [Product]
     product(productId: ID!): Product
     user: User
     order(_id: ID!): Order
     cart(userId: ID!): Cart
-   
   }
 
   type Mutation {

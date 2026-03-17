@@ -1,8 +1,5 @@
 import { gql } from '@apollo/client';
 
-
-  
-
 export const QUERY_CHECKOUT = gql`
   query getCheckout($products: [ProductInput]) {
     checkout(products: $products) {
@@ -28,6 +25,18 @@ export const QUERY_ALL_PRODUCTS = gql`
   }
 `;
 
+export const GET_PRODUCTS = gql`
+
+  query GetProducts($keyword: String, $category: String) {
+  products(keyword: $keyword, category: $category){
+      _id
+      name
+      category
+      price 
+  }
+}
+`;
+
 export const QUERY_SINGLE_PRODUCT = gql`
 query getSingleProduct($productId: ID!) {
   product(productId: $productId) {
@@ -41,7 +50,6 @@ query getSingleProduct($productId: ID!) {
       seller
       category
       keyword
-  
   }
 }
 

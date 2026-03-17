@@ -30,7 +30,7 @@ export default function AppRoutes() {
       <Route path='/account/sale-history' element={<SaleHistory />} />
       <Route path='/user' element={<UserProducts />} />
       <Route path='/product/:productId' element={<SingleProduct />} />
-      <Route path='/productsearch/:searchKeyword' element={<ProductSearch />} />
+      <Route path='/products/search' element={<ProductSearch />} />
     </Routes>
   )
 }
